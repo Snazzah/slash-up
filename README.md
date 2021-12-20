@@ -33,7 +33,7 @@ Config files are taken from `slash-up.config.js` file or the file set from `--co
 | applicationId | `string` | The application ID of the Discord bot |
 | commandPath | `string` | The path to the local commands directory |
 | globalToGuild | `string`? | The guild ID to set all global commands to when syncing, best for development environments |
-| beforeSync | `'block' | 'confirm'`? | What to do before syncing, 'confirm' prompts you before syncing |
+| beforeSync | `'block'/'confirm'`? | What to do before syncing, 'confirm' prompts you before syncing |
 | env | `object`? | An object with keys as environment names and values as configs. You can use `--env (-e)` to use an environment's config |
 
 
