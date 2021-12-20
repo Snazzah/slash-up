@@ -9,6 +9,8 @@ CLI to view Discord commands and sync commands with [slash-create](https://githu
 
 </div>
 
+![](https://get.snaz.in/8BY7i6M.png)
+
 ```
 slash-up <command>
 
