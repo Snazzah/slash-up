@@ -1,0 +1,15 @@
+# Packages
+node_modules/
+
+# Log files
+logs/
+*.log
+
+# Miscellaneous
+.tmp/
+.vscode/
+docs/docs.json
+webpack/
+testing/
+.idea/
+lib/
