@@ -7,7 +7,6 @@ import { SlashCreator } from 'slash-create';
 import fs from 'fs/promises';
 import { register } from '@adonisjs/require-ts';
 import logSymbols from 'log-symbols';
-register(path.join(__dirname, '..'));
 
 interface Argv {
   [argName: string]: unknown;
