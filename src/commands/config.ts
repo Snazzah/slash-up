@@ -13,14 +13,14 @@ const defaultConfig = stripIndent`
 
 module.exports = {
   // The Token of the Discord bot
-	token: '',
+  token: '',
   // The Application ID of the Discord bot
-	applicationId: '',
+  applicationId: '',
   // This is where the path to command files are, .ts files are supported!
   commandsPath: './commands',
   // You can use different environments with --env (-e)
   env: {
-		development: {
+    development: {
       // The "globalToGuild" option makes global commands sync to the specified guild instead.
       globalToGuild: process.env.GUILD_ID
     }
