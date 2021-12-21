@@ -1,10 +1,12 @@
 import type { CommandModule } from 'yargs';
-import { groupNames } from '../util';
+import { fileExists, groupNames } from '../util';
 import degit from 'degit';
 import { prompt } from 'enquirer';
 import ansi from 'ansi-colors';
 import logSymbols from 'log-symbols';
-import fs from 'fs';
+import spawn from 'cross-spawn';
+import fs from 'fs/promises';
+import path from 'path';
 
 interface Template {
   name: string;
@@ -75,7 +77,7 @@ export const initCommand: CommandModule = {
       if (!argv.template) {
         const options = await prompt<{ template: string; dest: string }>([
           {
-            type: 'autocomplete',
+            type: 'select',
             name: 'template',
             message: 'Template to clone?',
             choices: templates.map((t) => t.name)
@@ -88,7 +90,7 @@ export const initCommand: CommandModule = {
           }
         ]);
 
-        const empty = !fs.existsSync(options.dest) || fs.readdirSync(options.dest).length === 0;
+        const empty = !(await fileExists(options.dest)) || (await fs.readdir(options.dest)).length === 0;
 
         if (!empty) {
           const { force } = await prompt<{ force: boolean }>([
@@ -111,6 +113,15 @@ export const initCommand: CommandModule = {
       );
       if (!template) return console.error(logSymbols.error, `Unknown template ${argv.template}.`);
 
+      const { pm } = await prompt<{ pm: string }>([
+        {
+          type: 'select',
+          name: 'pm',
+          message: 'Which package manager do you use?',
+          choices: ['npm', 'yarn', 'pnpm']
+        }
+      ]);
+
       const d = degit(template.repo, {
         force: argv.force as boolean,
         cache: argv.cache as boolean
@@ -125,6 +136,19 @@ export const initCommand: CommandModule = {
       });
 
       await d.clone(argv.dest as string);
+
+      spawn.sync(pm, ['install'], {
+        cwd: argv.dest as string,
+        stdio: 'inherit'
+      });
+
+      const envExists = await fileExists(path.join(argv.dest as string, '.env.example'));
+      if (envExists)
+        await fs.rename(path.join(argv.dest as string, '.env.example'), path.join(argv.dest as string, '.env'));
+
+      console.log(logSymbols.success, `Created a ${template.name} project in ${path.resolve(argv.dest as string)}`);
+      if (envExists)
+        console.log(logSymbols.info, `Make sure to edit the '.env' file to set your environment variables.`);
     } catch (err) {
       process.exitCode = 1;
       if (err === '') return console.error(logSymbols.error, ansi.red('Input cancelled.'));
