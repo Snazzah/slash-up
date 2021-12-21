@@ -1,6 +1,7 @@
 import logSymbols from 'log-symbols';
 import ansi from 'ansi-colors';
 import { ApplicationCommand, ApplicationCommandType, DiscordRESTError } from 'slash-create';
+import fs from 'fs/promises';
 
 export const DISCORD_EPOCH = 1_420_070_400_000;
 
@@ -30,4 +31,13 @@ export function formatAutocompleteCommand(command: ApplicationCommand) {
 
 export function snowflakeToTimestamp(snowflake: string): number {
   return Number(BigInt(snowflake) >> 22n) + DISCORD_EPOCH;
+}
+
+export async function fileExists(file: string) {
+  try {
+    await fs.access(file);
+    return true;
+  } catch (err) {
+    return false;
+  }
 }

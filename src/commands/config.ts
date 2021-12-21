@@ -4,6 +4,7 @@ import path from 'path';
 import fs from 'fs/promises';
 import ansi from 'ansi-colors';
 import logSymbols from 'log-symbols';
+import { fileExists } from '../util';
 
 const defaultConfig = stripIndent`
 // This is the slash-up config file.
@@ -36,7 +37,7 @@ export const configCommand: CommandModule = {
     }),
   handler: async (argv) => {
     const configFilePath = argv.dir ? path.join(argv.dir as string, 'slash-up.config.js') : 'slash-up.config.js';
-    if (await fs.lstat(configFilePath)) return console.log(logSymbols.error, ansi.red('Config file already exists.'));
+    if (await fileExists(configFilePath)) return console.log(logSymbols.error, ansi.red('Config file already exists.'));
     await fs.writeFile(configFilePath, defaultConfig);
     console.log(logSymbols.success, ansi.green(`Created config file at ${configFilePath}`));
   }
