@@ -75,36 +75,36 @@ export const initCommand: CommandModule = {
   handler: async (argv) => {
     try {
       if (!argv.template) {
-        const options = await prompt<{ template: string; dest: string }>([
-          {
-            type: 'select',
-            name: 'template',
-            message: 'Template to clone?',
-            choices: templates.map((t) => t.name)
-          },
-          {
-            type: 'input',
-            name: 'dest',
-            message: 'Destination directory?',
-            initial: '.'
-          }
-        ]);
+        const options = await prompt<{ template: string; dest: string }>({
+          type: 'select',
+          name: 'template',
+          message: 'Template to clone?',
+          choices: templates.map((t) => t.name)
+        });
+
+        argv.template = options.template;
+      }
+
+      if (!argv.dest) {
+        const options = await prompt<{ dest: string }>({
+          type: 'input',
+          name: 'dest',
+          message: 'Destination directory?',
+          initial: '.'
+        });
 
         const empty = !(await fileExists(options.dest)) || (await fs.readdir(options.dest)).length === 0;
 
         if (!empty) {
-          const { force } = await prompt<{ force: boolean }>([
-            {
-              type: 'confirm',
-              name: 'force',
-              message: 'Overwrite existing files?'
-            }
-          ]);
+          const { force } = await prompt<{ force: boolean }>({
+            type: 'confirm',
+            name: 'force',
+            message: 'Overwrite existing files?'
+          });
           if (!force) return console.error(logSymbols.error, 'Aborted.');
           argv.force = true;
         }
 
-        argv.template = options.template;
         argv.dest = options.dest;
       }
 
