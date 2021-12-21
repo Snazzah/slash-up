@@ -25,7 +25,8 @@ module.exports = {
       globalToGuild: process.env.GUILD_ID
     }
   }
-}`;
+};
+`;
 
 export const configCommand: CommandModule = {
   command: 'config [dir]',
