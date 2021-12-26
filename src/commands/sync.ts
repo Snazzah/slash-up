@@ -91,9 +91,12 @@ export const syncCommand: CommandModule = {
       if (argv.globalToGuild && argv.disableGuilds) argv.disableGuilds = false;
 
       if (config.globalToGuild)
-        creator.commands.forEach((command) => {
+        creator.commands.clone().forEach((command) => {
+          const oldKey = command.keyName;
           // @ts-ignore
           if (!command.guildIDs || command.guildIDs.length === 0) command.guildIDs = [config.globalToGuild];
+          creator.commands.delete(oldKey);
+          creator.commands.set(command.keyName, command);
         });
 
       if (argv.disableDelete) {
