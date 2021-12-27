@@ -1314,15 +1314,14 @@ shebang-regex@^3.0.0:
   resolved "https://registry.yarnpkg.com/shebang-regex/-/shebang-regex-3.0.0.tgz#ae16f1644d873ecad843b0307b143362d4c42172"
   integrity sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==
 
-slash-create@^4.4.2:
-  version "4.4.2"
-  resolved "https://registry.yarnpkg.com/slash-create/-/slash-create-4.4.2.tgz#00fb98cc0fca54dde10aef263835fd129ae96408"
-  integrity sha512-FC0Xb1dH24EiFbuhbqJZyeMcAbrS/fvXZ9sQjUhzg+InY5KUJYCDq84xhTRuRadWmabpo1s4lreUviCc1EEuaA==
+slash-create@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/slash-create/-/slash-create-5.0.1.tgz#074c182c09d0fbd4c59aceeedb77edb8a7769f0a"
+  integrity sha512-JxOAWuoXH38rvths7rhVGhSeI73eG82ckZu9Db3YxAEEDXsC1yy0iRyJt9VfhiO0DvIgtH/D6tbPPpV0GLC7Kw==
   dependencies:
     "@discordjs/collection" "^0.3.2"
     eventemitter3 "^4.0.7"
     lodash.isequal "^4.5.0"
-    require-all "^3.0.0"
     tweetnacl "^1.0.3"
 
 slash@^3.0.0:
