@@ -5,7 +5,7 @@ import path from 'path';
 import ansi from 'ansi-colors';
 import { SlashCreator } from 'slash-create';
 import fs from 'fs/promises';
-import { register } from '@adonisjs/require-ts';
+import { transpileModule } from 'typescript';
 import logSymbols from 'log-symbols';
 
 interface Argv {
@@ -33,11 +33,6 @@ interface Config {
 
 interface ConfigFile extends Config {
   env?: { [env: string]: Config };
-}
-
-export async function registerTSConfig() {
-  const tscPath = await findUp('tsconfig.json');
-  register(tscPath ? path.dirname(tscPath) : path.join(__dirname, '..'));
 }
 
 export async function getConfig(argv: Argv, requireCommandPath = false): Promise<Config> {
@@ -114,11 +109,12 @@ export async function makeCreator(config: Config, loadCommands = false) {
   creator.on('warn', (m) => console.error(logSymbols.warning, m));
   if (config.debug) creator.on('debug', (m) => console.log(ansi.magenta('debug '), m));
   if (config.commandPath && loadCommands) {
-    await registerTSConfig();
     const files = (await getFiles(config.commandPath)).filter((f) => f.endsWith('.js') || f.endsWith('.ts'));
     for (const file of files) {
       try {
-        const mod = require(file);
+        const mod = file.endsWith('.ts')
+          ? eval(transpileModule(await fs.readFile(file, { encoding: 'utf-8' }), {}).outputText)
+          : require(file);
         if (!mod) continue;
         try {
           creator.registerCommand(mod);

@@ -39,7 +39,6 @@
     "node": ">=14"
   },
   "dependencies": {
-    "@adonisjs/require-ts": "^2.0.8",
     "ansi-colors": "^4.1.1",
     "common-tags": "^1.8.2",
     "cross-spawn": "^7.0.3",
