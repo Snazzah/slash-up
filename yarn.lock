@@ -845,6 +845,11 @@ optionator@^0.9.1:
     type-check "^0.4.0"
     word-wrap "^1.2.3"
 
+options-defaults@^2.0.39:
+  version "2.0.39"
+  resolved "https://registry.yarnpkg.com/options-defaults/-/options-defaults-2.0.39.tgz#cf944237ae233fc506840fb6fc9eb36c3f89d0cd"
+  integrity sha512-oM3zz6IqQSXodCIpev4WcDIJeCKRLdNobGhZUsN1kKnmNXg18Rfwy7bolWLOwc3farTLRRRtp6qFarhUAa+23A==
+
 p-limit@^3.0.2:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/p-limit/-/p-limit-3.1.0.tgz#e1daccbe78d0d1388ca18c64fea38e3e57e3706b"
@@ -1030,6 +1035,13 @@ to-regex-range@^5.0.1:
   integrity sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==
   dependencies:
     is-number "^7.0.0"
+
+ts-import@^2.0.40:
+  version "2.0.40"
+  resolved "https://registry.yarnpkg.com/ts-import/-/ts-import-2.0.40.tgz#1d9bb6e62a8349a4e6337992680b1969e555cdd4"
+  integrity sha512-yTP9fSDaBL1LvcN7/taRHbcQoazk7cLrDOEPyIDUVKLNYTMhaDkvZhfUwp41iXe+GlAFL6l87ZoGABWZRdIfjg==
+  dependencies:
+    options-defaults "^2.0.39"
 
 ts-node@^10.4.0:
   version "10.4.0"

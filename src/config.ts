@@ -5,7 +5,7 @@ import path from 'path';
 import ansi from 'ansi-colors';
 import { SlashCreator } from 'slash-create';
 import fs from 'fs/promises';
-import { transpileModule } from 'typescript';
+import { tsImport } from 'ts-import';
 import logSymbols from 'log-symbols';
 
 interface Argv {
@@ -112,9 +112,7 @@ export async function makeCreator(config: Config, loadCommands = false) {
     const files = (await getFiles(config.commandPath)).filter((f) => f.endsWith('.js') || f.endsWith('.ts'));
     for (const file of files) {
       try {
-        const mod = file.endsWith('.ts')
-          ? eval(transpileModule(await fs.readFile(file, { encoding: 'utf-8' }), {}).outputText)
-          : require(file);
+        const mod = file.endsWith('.ts') ? await tsImport.compile(file) : require(file);
         if (!mod) continue;
         try {
           creator.registerCommand(mod);
