@@ -29,7 +29,7 @@ export const viewCommand: CommandModule = {
           describe: 'The application ID of the Discord bot',
           alias: 'i',
           type: 'string',
-          group: 'Configuration'
+          group: groupNames.config
         },
         'guild-id': {
           describe: 'The guild to list from',

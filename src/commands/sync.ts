@@ -27,7 +27,7 @@ export const syncCommand: CommandModule = {
         describe: 'The application ID of the Discord bot',
         alias: 'i',
         type: 'string',
-        group: 'Configuration'
+        group: groupNames.config
       },
       'command-path': {
         describe: 'The path to the command directory',

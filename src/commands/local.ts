@@ -16,6 +16,18 @@ export const localCommand: CommandModule = {
         type: 'string',
         group: groupNames.config
       },
+      token: {
+        describe: 'The token of the Discord bot',
+        alias: 't',
+        type: 'string',
+        group: groupNames.config
+      },
+      'application-id': {
+        describe: 'The application ID of the Discord bot',
+        alias: 'i',
+        type: 'string',
+        group: groupNames.config
+      },
       'command-path': {
         describe: 'The path to the command directory',
         alias: 'C',
