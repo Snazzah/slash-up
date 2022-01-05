@@ -2,7 +2,11 @@
   "name": "slash-up",
   "version": "1.0.9",
   "description": "CLI for viewing and syncing Discord commands with slash-create",
-  "author": "Snazzah",
+  "author": {
+    "name": "Snazzah",
+    "email": "me@snazzah.com",
+    "url": "https://snazzah.com/"
+  },
   "license": "MIT",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
