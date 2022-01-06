@@ -40,7 +40,9 @@ export async function getConfig(argv: Argv, requireCommandPath = false): Promise
     token: argv.token,
     applicationId: argv.applicationId,
     globalToGuild: argv.globalToGuild,
-    debug: argv.debug
+    commandPath: argv.commandPath,
+    debug: argv.debug,
+    beforeSync: argv.beforeSync
   };
   const configFilePath = argv.config || (await findUp('slash-up.config.js'));
   if (configFilePath) {
