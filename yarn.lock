@@ -14,10 +14,10 @@
   dependencies:
     "@cspotcode/source-map-consumer" "0.8.0"
 
-"@discordjs/collection@^0.3.2":
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/@discordjs/collection/-/collection-0.3.2.tgz#3c271dd8a93dad89b186d330e24dbceaab58424a"
-  integrity sha512-dMjLl60b2DMqObbH1MQZKePgWhsNe49XkKBZ0W5Acl5uVV43SN414i2QfZwRI7dXAqIn8pEWD2+XXQFn9KWxqg==
+"@discordjs/collection@0.2.4":
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/@discordjs/collection/-/collection-0.2.4.tgz#c8ff2250430dcec7324dd4aafd1ccbcbdfa9ac14"
+  integrity sha512-PVrEJH+V6Ob0OwfagYQ/57kwt/HNEJxt5jqY4P+S3st9y29t9iokdnGMQoJXG5VEMAQIPbzu9Snw1F6yE8PdLA==
 
 "@eslint/eslintrc@^1.0.5":
   version "1.0.5"
@@ -982,11 +982,11 @@ shebang-regex@^3.0.0:
   integrity sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==
 
 slash-create@^5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/slash-create/-/slash-create-5.0.1.tgz#074c182c09d0fbd4c59aceeedb77edb8a7769f0a"
-  integrity sha512-JxOAWuoXH38rvths7rhVGhSeI73eG82ckZu9Db3YxAEEDXsC1yy0iRyJt9VfhiO0DvIgtH/D6tbPPpV0GLC7Kw==
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/slash-create/-/slash-create-5.0.2.tgz#999cc80fe558a34da8bb996da5666390256ab5fa"
+  integrity sha512-qsfkoDcybkpQQr9qVG6On/HH7HMNFdD0uHjg2IPy4IcmLCcRPgHhhbl0z3Ju3MAYdIVAk5EI6neL2XCfBrJRVA==
   dependencies:
-    "@discordjs/collection" "^0.3.2"
+    "@discordjs/collection" "0.2.4"
     eventemitter3 "^4.0.7"
     lodash.isequal "^4.5.0"
     tweetnacl "^1.0.3"
