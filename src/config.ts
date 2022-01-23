@@ -120,7 +120,8 @@ export async function makeCreator(config: Config, loadCommands = false) {
         try {
           creator.registerCommand(mod);
         } catch (e) {
-          /* Ignore */
+          if (config.debug)
+            console.error(logSymbols.warning, ansi.underline.yellow('Failed to register command at file:'), e);
         }
       } catch (e) {
         console.error(logSymbols.error, ansi.underline.red('Failed to load command at file:'), file);
