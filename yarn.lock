@@ -979,9 +979,9 @@ shebang-regex@^3.0.0:
   integrity sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==
 
 slash-create@^5.0.1:
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/slash-create/-/slash-create-5.0.3.tgz#c1288dff43876c74c24d25e7b5bb01f28c1f7ff8"
-  integrity sha512-ge0HDaiAe1kLyxKRtizeKJZY0mMPApDWrDYE2dBWfbeh/An/Adhfrt49T1GB1IHT67WwVQi7tFf9+WvhOuEmBQ==
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/slash-create/-/slash-create-5.1.0.tgz#6170f6dcda452572acb15d846897325300734255"
+  integrity sha512-/WhuPlALTEoQYYXZa7x6VuuqMMNaj7sbcLZ9JZnWjRxN88zAQgsyul9WX/hDala2ljL/p+0xgAuO1rJq5Wp5CQ==
   dependencies:
     eventemitter3 "^4.0.7"
     lodash.isequal "^4.5.0"
