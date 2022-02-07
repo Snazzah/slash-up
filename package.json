@@ -47,7 +47,7 @@
     "common-tags": "^1.8.2",
     "cross-spawn": "^7.0.3",
     "degit": "^2.8.4",
-    "dotenv": "^15.0.0",
+    "dotenv": "^16.0.0",
     "enquirer": "^2.3.6",
     "find-up": "5.0.0",
     "log-symbols": "4.1.0",
