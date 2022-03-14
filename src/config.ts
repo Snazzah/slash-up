@@ -20,6 +20,7 @@ interface Argv {
   commandPath?: string;
   beforeSync?: string;
   debug?: boolean;
+  ignoreRegisterErrors?: boolean;
   config?: string;
 }
 
@@ -30,6 +31,7 @@ interface Config {
   globalToGuild?: string;
   beforeSync?: string;
   debug?: boolean;
+  ignoreRegisterErrors?: boolean;
 }
 
 interface ConfigFile extends Config {
@@ -57,6 +59,7 @@ export async function getConfig(argv: Argv, requireCommandPath = false): Promise
       config.commandPath = config.commandPath || configFile.env[argv.env].commandPath;
       config.debug = config.debug === undefined ? configFile.env[argv.env].debug : config.debug;
       config.beforeSync = config.beforeSync || configFile.env[argv.env].beforeSync;
+      config.ignoreRegisterErrors = config.ignoreRegisterErrors || configFile.env[argv.env].ignoreRegisterErrors;
     }
     config.token = config.token || configFile.token;
     config.applicationId = config.applicationId || configFile.applicationId;
@@ -64,6 +67,7 @@ export async function getConfig(argv: Argv, requireCommandPath = false): Promise
     config.commandPath = config.commandPath || configFile.commandPath;
     config.debug = config.debug === undefined ? configFile.debug : config.debug;
     config.beforeSync = config.beforeSync || configFile.beforeSync;
+    config.ignoreRegisterErrors = config.ignoreRegisterErrors || configFile.ignoreRegisterErrors;
   }
 
   if (!config.applicationId) {
@@ -120,7 +124,7 @@ export async function makeCreator(config: Config, loadCommands = false) {
         try {
           creator.registerCommand(mod);
         } catch (e) {
-          if (config.debug)
+          if (!config.ignoreRegisterErrors)
             console.error(logSymbols.warning, ansi.underline.yellow('Failed to register command at file:'), e);
         }
       } catch (e) {

@@ -71,6 +71,12 @@ export const syncCommand: CommandModule = {
         type: 'string',
         group: groupNames.opts
       },
+      'ignore-register-errors': {
+        describe: 'Whether to silence register errors',
+        alias: 'I',
+        type: 'boolean',
+        group: groupNames.opts
+      },
       config: {
         describe: 'The path to the config file, defaults to slash-up.config.js',
         alias: 'c',
