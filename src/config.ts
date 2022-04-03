@@ -49,7 +49,7 @@ export async function getConfig(argv: Argv, requireCommandPath = false): Promise
   };
   const configFilePath = argv.config || (await findUp('slash-up.config.js'));
   if (configFilePath) {
-    const envFile = await findUp('.env');
+    const envFile = await findUp([...(argv.env ? [`${argv.env}.env`] : []), '.env']);
     if (envFile) dotenv.config({ path: envFile });
     const configFile: ConfigFile = require(configFilePath);
     if (argv.env && configFile.env && configFile.env[argv.env]) {
