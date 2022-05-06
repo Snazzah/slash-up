@@ -1,6 +1,6 @@
 {
   "name": "slash-up",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "CLI for viewing and syncing Discord commands with slash-create",
   "author": {
     "name": "Snazzah",
@@ -51,7 +51,7 @@
     "enquirer": "^2.3.6",
     "find-up": "5.0.0",
     "log-symbols": "4.1.0",
-    "slash-create": "^5.5.2",
+    "slash-create": "^5.5.3",
     "ts-node": "^10.4.0",
     "yargs": "^17.3.0"
   },
