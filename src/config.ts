@@ -126,7 +126,10 @@ export async function makeCreator(config: Config, loadCommands = false) {
         try {
           creator.registerCommand(mod);
         } catch (e) {
-          if (!config.ignoreRegisterErrors)
+          if (
+            !config.ignoreRegisterErrors &&
+            !('message' in (e as any) && (e as Error).message.startsWith('Invalid command object to register:'))
+          )
             console.error(logSymbols.warning, ansi.underline.yellow('Failed to register command at file:'), file, e);
         }
       } catch (e) {
