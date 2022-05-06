@@ -7,7 +7,9 @@ import { SlashCreator } from 'slash-create';
 import fs from 'fs/promises';
 import { register } from 'ts-node';
 import logSymbols from 'log-symbols';
-register();
+register({
+  transpileOnly: true
+});
 
 interface Argv {
   [argName: string]: unknown;
