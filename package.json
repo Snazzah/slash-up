@@ -51,7 +51,7 @@
     "enquirer": "^2.3.6",
     "find-up": "5.0.0",
     "log-symbols": "4.1.0",
-    "slash-create": "^5.5.3",
+    "slash-create": "^5.6.1",
     "ts-node": "^10.4.0",
     "yargs": "^17.3.0"
   },
