@@ -3,6 +3,7 @@ import {
   ApplicationCommandOption,
   ApplicationCommandType,
   CommandOptionType,
+  Permissions,
   SlashCommand
 } from 'slash-create';
 import { stripIndents, oneLine } from 'common-tags';
@@ -76,12 +77,32 @@ export function displayProperty(name: string, value: any): string {
   return `    ${ansi.red(name)}: ${value}`;
 }
 
+export function displayLocalizations(name: string, value: { [lang: string]: string }): string {
+  return (
+    `    ${ansi.red(name)}:` +
+    `      ${Object.keys(value)
+      .map((lang) => `${lang}: ${value[lang]}`)
+      .join('\n      ')}`
+  );
+}
+
 export function displayExpandedCommand(command: ApplicationCommand): string {
   return `${[
     displayCommandHeader(command),
     displayProperty('Created At', new Date(snowflakeToTimestamp(command.id)).toLocaleString()),
     displayProperty('Last Updated', new Date(snowflakeToTimestamp(command.version)).toLocaleString()),
-    displayProperty('Default Permission', command.default_permission)
+    command.default_permission === false ? displayProperty('Default Permission', command.default_permission) : '',
+    typeof command.dm_permission === 'boolean' ? displayProperty('DM Permission', command.dm_permission) : '',
+    typeof command.default_member_permissions === 'string'
+      ? displayProperty(
+          'Default Member Permission',
+          new Permissions(command.default_member_permissions).toArray().join(', ')
+        )
+      : '',
+    command.name_localizations ? displayLocalizations('Name Localizations', command.name_localizations) : '',
+    command.description_localizations
+      ? displayLocalizations('Description Localizations', command.description_localizations)
+      : ''
   ]
     .filter((line) => !!line)
     .join('\n')}${
