@@ -136,7 +136,6 @@ export const syncCommand: CommandModule = {
 
       if (argv.guildId) {
         await creator.syncCommandsIn(argv.guildId as string, !argv.disableDelete);
-        if (!argv.disablePermissions) await creator.syncCommandPermissions();
 
         const count = creator.commands.filter((c) => !!c.guildIDs?.includes(argv.guildId as string)).size;
         console.log(logSymbols.success, ansi.green(`Synced ${count} guild commands.`));
