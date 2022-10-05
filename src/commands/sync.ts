@@ -149,11 +149,12 @@ export const syncCommand: CommandModule = {
 
         console.log(logSymbols.success, ansi.green(`Synced ${creator.commands.size} commands.`));
       }
+      process.exit(0);
     } catch (err) {
-      process.exitCode = 1;
-      if (err instanceof DiscordRESTError) return handleRESTError(err);
-      if (err === '') return console.error(logSymbols.error, ansi.red('Input cancelled.'));
-      return console.error(logSymbols.error, ansi.red((err as any).message));
+      if (err instanceof DiscordRESTError) handleRESTError(err);
+      else if (err === '') console.error(logSymbols.error, ansi.red('Input cancelled.'));
+      else console.error(logSymbols.error, ansi.red((err as any).message));
+      process.exit(1);
     }
   }
 };
