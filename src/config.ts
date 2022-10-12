@@ -134,6 +134,7 @@ export async function makeCreator(config: Config, loadCommands = false) {
         }
       } catch (e) {
         console.error(logSymbols.error, ansi.underline.red('Failed to load command at file:'), file);
+        console.error(e);
         throw e;
       }
     }
