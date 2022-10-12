@@ -1,6 +1,6 @@
 {
   "name": "slash-up",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "CLI for viewing and syncing Discord commands with slash-create",
   "author": {
     "name": "Snazzah",
