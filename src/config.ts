@@ -5,11 +5,13 @@ import path from 'path';
 import ansi from 'ansi-colors';
 import { SlashCreator } from 'slash-create';
 import fs from 'fs/promises';
-import { register } from 'ts-node';
+// import { register } from 'ts-node';
 import logSymbols from 'log-symbols';
-register({
-  transpileOnly: true
-});
+// register({
+//   transpileOnly: true
+// });
+
+require('@esbuild-kit/cjs-loader');
 
 interface Argv {
   [argName: string]: unknown;
