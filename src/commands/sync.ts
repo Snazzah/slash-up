@@ -4,7 +4,7 @@ import ansi from 'ansi-colors';
 import logSymbols from 'log-symbols';
 import { groupNames, handleRESTError } from '../util';
 import { prompt } from 'enquirer';
-import { DiscordRESTError } from 'slash-create';
+import { DiscordRESTError, SlashCreator } from 'slash-create';
 
 export const syncCommand: CommandModule = {
   command: 'sync',
@@ -140,11 +140,15 @@ export const syncCommand: CommandModule = {
         const count = creator.commands.filter((c) => !!c.guildIDs?.includes(argv.guildId as string)).size;
         console.log(logSymbols.success, ansi.green(`Synced ${count} guild commands.`));
       } else {
-        await creator.syncCommandsAsync({
+        // v5 compat
+        const sync: SlashCreator['syncCommandsAsync'] =
+          'syncCommandsAsync' in creator ? creator.syncCommandsAsync : (creator as any).syncCommands;
+
+        await sync({
           deleteCommands: !argv.disableDelete,
           syncGuilds: !argv.disableGuilds,
           skipGuildErrors: !argv.noGuildFail,
-          syncPermissions: !argv.disablePermissions
+          syncPermissions: false
         });
 
         console.log(logSymbols.success, ansi.green(`Synced ${creator.commands.size} commands.`));
