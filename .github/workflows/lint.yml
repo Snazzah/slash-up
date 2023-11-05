@@ -9,6 +9,8 @@ on:
       - ".eslintrc.*"
       - ".prettierrc"
       - ".github/workflows/lint.yml"
+      - "package.json"
+      - "pnpm-lock.yaml"
   pull_request_target:
     branches:
       - "*"
