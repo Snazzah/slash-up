@@ -116,7 +116,15 @@ export async function makeCreator(config: Config, loadCommands = false) {
   creator.on('warn', (m) => console.error(logSymbols.warning, m));
   if (config.debug) creator.on('debug', (m) => console.log(ansi.magenta('debug '), m));
   if (config.commandPath && loadCommands) {
-    const files = (await getFiles(config.commandPath)).filter((f) => f.endsWith('.js') || f.endsWith('.ts'));
+    const files = (await getFiles(config.commandPath)).filter(
+      (f) =>
+        f.endsWith('.js') ||
+        f.endsWith('.ts') ||
+        f.endsWith('.cjs') ||
+        f.endsWith('.mjs') ||
+        f.endsWith('.cts') ||
+        f.endsWith('.mts')
+    );
     for (const file of files) {
       try {
         const mod = require(file);
