@@ -142,7 +142,9 @@ export const syncCommand: CommandModule = {
       } else {
         // v5 compat
         const sync: SlashCreator['syncCommandsAsync'] =
-          'syncCommandsAsync' in creator ? creator.syncCommandsAsync : (creator as any).syncCommands;
+          'syncCommandsAsync' in creator
+            ? creator.syncCommandsAsync.bind(creator)
+            : (creator as any).syncCommands.bind(creator);
 
         await sync({
           deleteCommands: !argv.disableDelete,
