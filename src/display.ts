@@ -132,7 +132,9 @@ export function displayExpandedCommand(command: ApplicationCommand): string {
 
 export function displayLocalCommand(command: SlashCommand): string {
   return `${[
-    displayCommandHeader(command.commandJSON as ApplicationCommand),
+    displayCommandHeader(
+      ('toCommandJSON' in command ? command.toCommandJSON() : (command as any).commandJSON) as ApplicationCommand
+    ),
     displayProperty('Default Permission', command.defaultPermission),
     command.guildIDs?.length ? displayProperty('Guilds', command.guildIDs.join(', ')) : ''
   ]
