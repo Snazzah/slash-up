@@ -92,10 +92,11 @@ export function displayExpandedCommand(command: ApplicationCommand): string {
     displayProperty('Created At', new Date(snowflakeToTimestamp(command.id)).toLocaleString()),
     displayProperty('Last Updated', new Date(snowflakeToTimestamp(command.version)).toLocaleString()),
     command.default_permission === false ? displayProperty('Default Permission', command.default_permission) : '',
+    command.nsfw === true ? displayProperty('NSFW', command.nsfw) : '',
     typeof command.dm_permission === 'boolean' ? displayProperty('DM Permission', command.dm_permission) : '',
     typeof command.default_member_permissions === 'string'
       ? displayProperty(
-          'Default Member Permission',
+          'Default Member Permissions',
           new Permissions(command.default_member_permissions).toArray().join(', ')
         )
       : '',
@@ -135,7 +136,11 @@ export function displayLocalCommand(command: SlashCommand): string {
     displayCommandHeader(
       ('toCommandJSON' in command ? command.toCommandJSON() : (command as any).commandJSON) as ApplicationCommand
     ),
-    displayProperty('Default Permission', command.defaultPermission),
+    displayProperty('DM Permission', command.dmPermission),
+    displayProperty('NSFW', command.nsfw),
+    command.requiredPermissions
+      ? displayProperty('Default Member Permissions', new Permissions(command.requiredPermissions).toArray().join(', '))
+      : '',
     command.guildIDs?.length ? displayProperty('Guilds', command.guildIDs.join(', ')) : ''
   ]
     .filter((line) => !!line)

@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.4.2] - 2023-11-06
 ### Fixed:
 - Fixed issue when listing local commands
+- Fixed local commands not showing some attributes
 ## [1.4.1] - 2023-11-06
 ### Fixed:
 - Fixed a bug in the previous release creating errors when syncing
