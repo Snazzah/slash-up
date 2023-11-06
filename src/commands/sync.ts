@@ -141,15 +141,16 @@ export const syncCommand: CommandModule = {
         console.log(logSymbols.success, ansi.green(`Synced ${count} guild commands.`));
       } else {
         // v5 compat
-        const sync: SlashCreator['syncCommandsAsync'] =
+        const sync: SlashCreator['syncCommands'] =
           'syncCommandsAsync' in creator
-            ? creator.syncCommandsAsync.bind(creator)
-            : (creator as any).syncCommands.bind(creator);
+            ? (creator as any).syncCommandsAsync.bind(creator)
+            : creator.syncCommands.bind(creator);
 
         await sync({
           deleteCommands: !argv.disableDelete,
           syncGuilds: !argv.disableGuilds,
           skipGuildErrors: !argv.noGuildFail,
+          // @ts-ignore
           syncPermissions: false
         });
 
