@@ -33,8 +33,8 @@ dependencies:
     specifier: 4.1.0
     version: 4.1.0
   slash-create:
-    specifier: ^6.0.0
-    version: 6.0.0
+    specifier: ^6.0.1
+    version: 6.0.1
   yargs:
     specifier: ^17.7.1
     version: 17.7.1
@@ -1622,8 +1622,8 @@ packages:
     resolution: {integrity: sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==}
     dev: true
 
-  /slash-create@6.0.0:
-    resolution: {integrity: sha512-SpRT6KuegNYYIyrCeQhawZ3Jr5dZDQ64WObf/l1IGKnJ4c1zC3EZyNWTcnKyQeJAXNSMBezfB0odBRlo4EQJuA==}
+  /slash-create@6.0.1:
+    resolution: {integrity: sha512-2KZc2WLMNLGzKlEX/uQN47qtL/TUKfl3Vd2/EPJEqYHXHWABeyYfrtelWZwjGJevYNYKNnVoHkQ87g6pwRRQ/A==}
     engines: {node: '>=16'}
     peerDependencies:
       express: ^4

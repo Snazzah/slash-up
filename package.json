@@ -52,7 +52,7 @@
     "enquirer": "^2.3.6",
     "find-up": "5.0.0",
     "log-symbols": "4.1.0",
-    "slash-create": "^6.0.0",
+    "slash-create": "^6.0.1",
     "yargs": "^17.7.1"
   },
   "devDependencies": {
